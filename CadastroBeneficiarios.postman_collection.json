@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "19ce2d20-3b53-48bf-979e-617cb543c47f",
+		"name": "CadastroBeneficiarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5931682"
+	},
+	"item": [
+		{
+			"name": "gravar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 3,\r\n  \"nome\": \"Ana\",\r\n  \"telefone\": \"11936772455\",\r\n  \"dataNascimento\": \"28/07/1980\",\r\n  \"dataInclusao\": \"30/05/2024\",\r\n  \"dataAtualizacao\": \"31/05/2024\", \r\n   \"documentos\": [ { \"id\": 5,\r\n                     \"idBeneficiario\" : 3,\r\n                     \"tipoDocumento\" : \"CPF\", \r\n                     \"descricao\" : \"876177658-22\",\r\n                     \"dataInclusao\": \"30/05/2024\",\r\n                     \"dataAtualizacao\": \"31/05/2024\"},\r\n                     { \"id\": 6,\r\n                     \"idBeneficiario\" : 3,\r\n                     \"tipoDocumento\" : \"RG\", \r\n                     \"descricao\" : \"465074377\",\r\n                     \"dataInclusao\": \"30/05/2024\",\r\n                     \"dataAtualizacao\": \"31/05/2024\"}\r\n  ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/beneficiarios/gravar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"beneficiarios",
+						"gravar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/beneficiarios/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"beneficiarios",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/beneficiarios/listarbeneficiario/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"beneficiarios",
+						"listarbeneficiario",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/beneficiarios/excluirbeneficiario/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"beneficiarios",
+						"excluirbeneficiario",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
