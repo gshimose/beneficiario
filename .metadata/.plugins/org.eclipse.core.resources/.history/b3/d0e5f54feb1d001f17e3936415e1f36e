@@ -1,0 +1,36 @@
+package com.cadastro.teste.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cadastro.teste.model.BeneficiarioModel;
+import com.cadastro.teste.model.DocumentoModel;
+import com.cadastro.teste.repository.BeneficiarioRepository;
+
+@Service
+public class BeneficiarioService {
+	
+	@Autowired
+	BeneficiarioRepository beneficiarioRepository;
+	
+	@Autowired
+	DocumentoModel  documento;
+	
+	
+	public String salvar (BeneficiarioModel beneficiario) {
+		
+		List<DocumentoModel> documentos = new ArrayList<DocumentoModel>();
+
+		String resultado = "Gravado com sucesso!";
+		try {
+			beneficiarioRepository.save(beneficiario);
+		} catch (Exception e) {
+			resultado = "[ERRO] - " + e.getMessage();
+		}
+		return resultado;
+		
+	}
+}

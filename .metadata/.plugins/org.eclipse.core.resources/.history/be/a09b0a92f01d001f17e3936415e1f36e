@@ -1,0 +1,44 @@
+package com.cadastro.teste.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cadastro.teste.model.BeneficiarioModel;
+import com.cadastro.teste.service.BeneficiarioService;
+
+@RestController
+@RequestMapping("/beneficiarios")
+public class BeneficiarioController {
+	
+	 @Autowired
+	 private BeneficiarioService beneficiarioService;
+ 
+	    //Cadastrar um beneficiário junto com seus documentos
+	    @PostMapping("/gravar")
+	    public String gravar(@RequestBody BeneficiarioModel beneficiarioModel) {
+	        return beneficiarioService.salvar(beneficiarioModel);
+	    }
+		
+		//Listar todos os beneficiários cadastrados
+		@GetMapping("/listar")
+		public List<BeneficiarioModel> listar ( ) {
+	
+			return beneficiarioService.listar();
+		}
+ 
+//		 - Listar todos os documentos de um beneficiário a partir de seu id;
+//		 - Atualizar os dados cadastrais de um beneficiário;
+//		 - Remover um beneficiário.
+		@GetMapping("/teste")
+		public String teste ( ) {
+	
+			return "";
+		}
+
+}

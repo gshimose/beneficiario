@@ -1,0 +1,5 @@
+package com.cadastro.teste.repository;
+
+public interface BeneficiarioRepository {
+
+}

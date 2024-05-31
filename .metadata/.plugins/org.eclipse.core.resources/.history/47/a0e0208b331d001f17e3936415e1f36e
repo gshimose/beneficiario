@@ -1,0 +1,38 @@
+package com.cadastro.teste.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cadastro.teste.model.Beneficiario;
+import com.cadastro.teste.model.Documento;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
+public interface BeneficiarioRepository extends JpaRepository<c, Long>{
+	
+	@PersistenceContext EntityManager tabela;
+	
+	Beneficiario findByNome (String nome);
+	
+    public default List<Beneficiario> listar() {
+        return tabela.createQuery("select b from Documento d INNER JOIN FETCH d.idBeneficiario b", Beneficiario.class).getResultList();
+        
+
+    }
+	
+//    Pessoa getById(final Long id);
+//    
+//    List<Pessoa> findAll();
+// 
+//    void save(Pessoa pessoa);
+// 
+//    void update(Pessoa pessoa);
+// 
+//    void remove(Pessoa pessoa);
+// 
+//    void removeById(final Long id);
+	
+
+}

@@ -1,0 +1,87 @@
+package com.cadastro.teste.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tbdocto")
+public class Documento {
+
+	@Id
+    @Column(name = "ID", nullable = false)
+    private Long id;
+
+    @Column(name = "idBeneficiario", nullable = false)
+    private Long idBeneficiario;
+
+    @Column(name = "tipoDocumento", length = 50, nullable = false)
+    private String tipoDocumento;
+    
+    @Column(name = "descricao", length = 50, nullable = false)
+    private String descricao;
+    
+    @Column(name = "dataInclusao", length = 50, nullable = false)
+    private String dataInclusao;
+    
+    @Column(name = "dataAtualizacao", length = 50, nullable = false)
+    private String dataAtualizacao;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getIdBeneficiario() {
+		return idBeneficiario;
+	}
+
+	public void setIdBeneficiario(Long idBeneficiario) {
+		this.idBeneficiario = idBeneficiario;
+	}
+
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDataInclusao() {
+		return dataInclusao;
+	}
+
+	public void setDataInclusao(String dataInclusao) {
+		this.dataInclusao = dataInclusao;
+	}
+
+	public String getDataAtualizacao() {
+		return dataAtualizacao;
+	}
+
+	public void setDataAtualizacao(String dataAtualizacao) {
+		this.dataAtualizacao = dataAtualizacao;
+	}
+    
+
+    
+
+    
+
+
+}

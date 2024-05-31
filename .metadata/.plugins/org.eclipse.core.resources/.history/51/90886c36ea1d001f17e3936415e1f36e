@@ -1,0 +1,27 @@
+package com.cadastro.teste.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cadastro.teste.model.BeneficiarioModel;
+import com.cadastro.teste.repository.BeneficiarioRepository;
+
+@Service
+public class BeneficiarioService {
+	
+	@Autowired
+	BeneficiarioRepository beneficiarioRepository;
+	
+	
+	public String salvar (BeneficiarioModel beneficiario) {
+		
+		String resultado = "Gravado com sucesso!";
+		try {
+			beneficiarioRepository.save(beneficiario);
+		} catch (Exception e) {
+			resultado = "[ERRO] - " + e.getMessage();
+		}
+		return resultado;
+		
+	}
+}

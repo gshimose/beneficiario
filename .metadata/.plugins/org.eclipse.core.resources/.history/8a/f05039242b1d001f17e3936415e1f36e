@@ -1,0 +1,15 @@
+package com.cadastro.teste.repository;
+
+import java.util.List;
+
+import org.aspectj.apache.bcel.util.Repository;
+
+import com.cadastro.teste.model.Beneficiario;
+
+public interface BeneficiarioRepository extends Repository<Beneficiario, Long>{
+	
+	List<Beneficiario> findById (Long id) {
+		
+	}
+
+}

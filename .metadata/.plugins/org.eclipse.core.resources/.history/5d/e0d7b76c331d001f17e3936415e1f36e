@@ -1,0 +1,15 @@
+package com.cadastro.teste.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cadastro.teste.model.Beneficiario;
+
+public interface BeneficiarioRepository extends JpaRepository<Beneficiario, Long>{
+	
+	Beneficiario findByNome (String nome);
+	
+
+}

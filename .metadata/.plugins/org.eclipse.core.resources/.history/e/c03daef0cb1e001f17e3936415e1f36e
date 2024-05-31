@@ -1,0 +1,80 @@
+package com.cadastro.teste.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cadastro.teste.model.Beneficiario;
+import com.cadastro.teste.model.Documento;
+import com.cadastro.teste.repository.BeneficiarioRepository;
+import com.cadastro.teste.repository.DocumentoRepository;
+import com.cadastro.teste.request.BeneficiarioRequest;
+
+@Service
+public class BeneficiarioService {
+	
+	@Autowired
+	BeneficiarioRepository beneficiarioRepository;
+	
+	@Autowired
+	DocumentoRepository documentoRepository;
+	
+	
+	public String salvar (BeneficiarioRequest beneficiarioRequest) {
+		
+		String resultado = "Gravado com sucesso!";
+		
+		try {
+				Beneficiario beneficiario = new Beneficiario();
+				
+				beneficiario.setId(beneficiarioRequest.getId());
+				beneficiario.setNome(beneficiarioRequest.getNome());
+				beneficiario.setTelefone(beneficiarioRequest.getTelefone());
+				beneficiario.setDataNascimento(beneficiarioRequest.getDataNascimento());
+				beneficiario.setDataInclusao(beneficiarioRequest.getDataInclusao());
+				beneficiario.setDataAtualizacao(beneficiarioRequest.getDataAtualizacao());
+				
+				beneficiarioRepository.save(beneficiario);
+				
+				for (int i=0; i < beneficiarioRequest.getDocumentos().size(); i++ ) {
+					Documento  documento = new Documento();
+					documento.setId(beneficiarioRequest.getDocumentos().get(i).getId());
+					documento.setTipoDocumento(beneficiarioRequest.getDocumentos().get(i).getTipoDocumento());
+					documento.setIdBeneficiario(beneficiarioRequest.getDocumentos().get(i).getIdBeneficiario());
+					documento.setDescricao(beneficiarioRequest.getDocumentos().get(i).getDescricao());
+					documento.setDataInclusao(beneficiarioRequest.getDocumentos().get(i).getDataInclusao());
+					documento.setDataAtualizacao(beneficiarioRequest.getDocumentos().get(i).getDataAtualizacao());
+					
+					documentoRepository.save(documento);
+				}
+		} catch (Exception e) {
+			resultado = "[ERRO] - " + e.getMessage();
+		}		
+
+		return resultado;
+	}
+	
+	
+	public List<Beneficiario> listar () {
+		return beneficiarioRepository.findAll();
+	}
+	
+	
+	public  Optional<Beneficiario> listarBeneficiario (Long id) {
+		return beneficiarioRepository.findById(id);
+	}
+	
+	public  String excluirBeneficiario (Long id) {
+		String resultado = "Beneficiario excluido com sucesso!";
+		try {
+			beneficiarioRepository.deleteById(id);
+		} catch (Exception e) {
+			resultado = "[ERRO] - " + e.getMessage();
+		}
+		return resultado;
+		
+	}
+}

@@ -1,0 +1,5 @@
+package com.cadastro.teste.service;
+
+public class BeneficiarioService {
+
+}

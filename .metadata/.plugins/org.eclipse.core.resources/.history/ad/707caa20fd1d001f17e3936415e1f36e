@@ -1,0 +1,45 @@
+package com.cadastro.teste.model;
+
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Beneficiario")
+public class BeneficiarioModel {
+	
+    @Id
+    @Column(name = "ID", nullable = false)
+    private Long id;
+
+    @Column(name = "nome", length = 50, nullable = false)
+    private String nome;
+   
+    @Column(name = "telefone", length = 50, nullable = false)
+    private String telefone;
+    
+    @Column(name = "dataNascimento", length = 50, nullable = false)
+    private String dataNascimento;
+    
+    @Column(name = "dataInclusao", length = 50, nullable = false)
+    private String dataInclusao;
+    
+    @Column(name = "dataAtualizacao", length = 50, nullable = false)
+    private String dataAtualizacao;
+  
+//    @OneToMany
+//    @JoinColumn(name="idBeneficiario")
+//    private List<DocumentoModel> documentos;
+
+
+    @OneToMany(mappedBy="Beneficiario")
+    private Set<Item> items;
+    
+}

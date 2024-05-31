@@ -1,0 +1,12 @@
+package com.cadastro.teste.service;
+
+import org.springframework.stereotype.Service;
+
+import com.cadastro.teste.repository.BeneficiarioRepository;
+
+@Service
+public class BeneficiarioService {
+	
+	BeneficiarioRepository beneficiarioRepository;
+
+}

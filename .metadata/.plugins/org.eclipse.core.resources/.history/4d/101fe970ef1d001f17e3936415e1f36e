@@ -1,0 +1,51 @@
+package com.cadastro.teste.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cadastro.teste.model.BeneficiarioModel;
+import com.cadastro.teste.model.DocumentoModel;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
+public interface BeneficiarioRepository extends JpaRepository<BeneficiarioModel, Long>{
+	
+	//public static final EntityManager tabela = null;
+	
+//	@PersistenceContext
+//    EntityManager tabela= null;
+	
+	BeneficiarioModel findByNome (String nome);
+	
+	
+//    @Query("select pv from ProductVariation pv where pv.product.id = :productId and pv.id = :productVariationId")
+//    Optional<ProductVariation> findByProductIdAdProductVariationId(@Param("productId") Long productId, @Param("productVariationId") Long productVariationId);
+	
+	
+//    public default List<Beneficiario> listar() {
+//        return tabela.createQuery("select * from tbBeneficiario b tbDocumento d where b.id = d.idBeneficiario", Beneficiario.class).getResultList();
+//    }
+
+//    
+//    public List<Consulta> listar() {
+//        return manager.createQuery("select c from Consulta c INNER JOIN FETCH c.paciente p", Consulta.class).getResultList();
+//    }
+    
+    
+	
+//    Pessoa getById(final Long id);
+//    
+//    List<Pessoa> findAll();
+// 
+//    void save(Pessoa pessoa);
+// 
+//    void update(Pessoa pessoa);
+// 
+//    void remove(Pessoa pessoa);
+// 
+//    void removeById(final Long id);
+	
+
+}

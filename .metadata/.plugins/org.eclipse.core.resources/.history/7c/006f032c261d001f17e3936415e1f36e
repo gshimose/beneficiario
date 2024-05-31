@@ -1,0 +1,5 @@
+package com.cadastro.teste.model;
+
+public class Documento {
+
+}

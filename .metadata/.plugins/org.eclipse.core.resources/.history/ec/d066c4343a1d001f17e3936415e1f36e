@@ -1,0 +1,5 @@
+package com.cadastro.teste.controller;
+
+public class BeneficiarioController {
+
+}

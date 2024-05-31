@@ -1,0 +1,49 @@
+package com.cadastro.teste.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cadastro.teste.model.BeneficiarioModel;
+import com.cadastro.teste.model.DocumentoModel;
+import com.cadastro.teste.repository.BeneficiarioRepository;
+import com.cadastro.teste.repository.DocumentoRepository;
+
+@Service
+public class BeneficiarioService {
+	
+	@Autowired
+	BeneficiarioRepository beneficiarioRepository;
+	
+	@Autowired
+	DocumentoRepository documentoRepository;
+	
+	
+	public String salvar (BeneficiarioModel beneficiario) {
+		
+		String resultado = "Gravado com sucesso!";
+		List<DocumentoModel> documentos = new ArrayList<DocumentoModel>();
+	
+		try {
+			for (int i=0; i < beneficiario.getDocumentos().size(); i++ ) {
+				DocumentoModel  documento = new DocumentoModel();
+				documento.setId(beneficiario.getDocumentos().get(i).getId());
+				documento.setTipoDocumento(beneficiario.getDocumentos().get(i).getTipoDocumento());
+				documento.setIdBeneficiario(beneficiario.getDocumentos().get(i).getIdBeneficiario());
+				documento.setDescricao(beneficiario.getDocumentos().get(i).getDescricao());
+				documento.setDataInclusao(beneficiario.getDocumentos().get(i).getDataInclusao());
+				documento.setDataAtualizacao(beneficiario.getDocumentos().get(i).getDataAtualizacao());
+				
+				documentoRepository.save(documento);
+			}			
+
+			beneficiarioRepository.save(beneficiario);
+		} catch (Exception e) {
+			resultado = "[ERRO] - " + e.getMessage();
+		}
+		return resultado;
+		
+	}
+}
